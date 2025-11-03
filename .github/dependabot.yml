@@ -1,0 +1,58 @@
+# .github/dependabot.yml
+# Automated dependency updates for security
+
+version: 2
+updates:
+  # User Service dependencies
+  - package-ecosystem: "npm"
+    directory: "/user-service"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "security"
+    
+  # Product Service dependencies
+  - package-ecosystem: "npm"
+    directory: "/product-service"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+      - "security"
+  
+  # Docker base images
+  - package-ecosystem: "docker"
+    directory: "/user-service"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "security"
+      
+  - package-ecosystem: "docker"
+    directory: "/product-service"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "security"
+      
+  - package-ecosystem: "docker"
+    directory: "/nginx"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "docker"
+      - "security"
+
+  # GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels:
+      - "github-actions"
+      - "security"

@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  # User Service
+  user-service:
+    build:
+      context: ./user-service
+      dockerfile: Dockerfile
+    container_name: user-service
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+    networks:
+      - microservices-network
+
+  # Product Service
+  product-service:
+    build:
+      context: ./product-service
+      dockerfile: Dockerfile
+    container_name: product-service
+    ports:
+      - "3002:3002"
+    environment:
+      - PORT=3002
+      - NODE_ENV=production
+    networks:
+      - microservices-network
+
+
+  # Nginx API Gateway
+  nginx-gateway:
+    build:
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: nginx-gateway
+    ports:
+      - "80:80"
+    depends_on:
+      - user-service
+      - product-service
+    networks:
+      - microservices-network
+
+
+networks:
+  microservices-network:
+    driver: bridge

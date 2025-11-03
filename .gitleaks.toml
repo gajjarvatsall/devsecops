@@ -1,0 +1,19 @@
+# Gitleaks configuration file
+# This file configures secret scanning rules
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "Allowlisted files and patterns"
+paths = [
+  '''node_modules/''',
+  '''\.git/''',
+  '''package-lock\.json''',
+]
+
+# Example: Add custom rules if needed
+# [[rules]]
+# id = "custom-api-key"
+# description = "Custom API Key"
+# regex = '''(?i)api[_-]?key[_-]?[=:]\s*['"]?([a-z0-9]{32})['"]?'''
