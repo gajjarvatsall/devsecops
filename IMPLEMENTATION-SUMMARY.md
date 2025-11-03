@@ -121,8 +121,8 @@ trivy fs .
 gitleaks detect --source . -v
 
 # Build and test locally
-docker-compose build
-docker-compose up
+docker compose build
+docker compose up
 ```
 
 ## 📚 Documentation
